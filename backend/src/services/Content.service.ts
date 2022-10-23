@@ -30,6 +30,9 @@ class ContentService {
   }
 
   async update(id: number, content: ContentModel): Promise<object> {
+    const lastcontent = await this.contentModel.findByPk(id);
+    if (!lastcontent) throw new Error('contentNotFound');
+
     return this.contentModel.update(content, { where: { id } }).then(async () => {
       this.historyModel.create({
         content_id: id,
@@ -41,6 +44,8 @@ class ContentService {
   }
 
   async delete(id: number): Promise<object> {
+    const lastcontent = await this.contentModel.findByPk(id);
+    if (!lastcontent) throw new Error('contentNotFound');
     return this.contentModel.destroy({ where: { id } }).then(() => {
       return { message: 'Conteúdo excluído com sucesso!' }
     }).catch(() => {throw new Error('contentNotFound')});
