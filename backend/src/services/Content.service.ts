@@ -10,7 +10,7 @@ class ContentService {
   async create(content: ContentModel): Promise<ContentModel> {
     const createdContent = await this.contentModel.create(content as any);
     return this.historyModel.create({
-      content: createdContent.id,
+      content_id: createdContent.id,
       titulo: createdContent.titulo,
       corpo: !content.corpo ? 'Campo deixado vazio pelo autor vazio.' : content.corpo
     }).then((result) => result );
@@ -32,7 +32,7 @@ class ContentService {
   async update(id: number, content: ContentModel): Promise<object> {
     return this.contentModel.update(content, { where: { id } }).then(async () => {
       this.historyModel.create({
-        content: id,
+        content_id: id,
         titulo: content.titulo,
         corpo: !content.corpo ? 'Campo deixado vazio pelo autor vazio.' : content.corpo
       });
