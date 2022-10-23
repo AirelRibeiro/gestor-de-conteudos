@@ -4,9 +4,11 @@ import Content from './Content';
 
 class History extends Model {
   id!: number;
-  content!: number;
+  content_id!: number;
   titulo!: string;
   corpo?: string;
+  created_at!: Date;
+  updated_at!: Date;
 }
 
 History.init( {
@@ -15,7 +17,7 @@ History.init( {
     primaryKey: true,
     type: DataTypes.INTEGER,
   },
-  contentId: {
+  content_id: {
     allowNull: false,
     type: DataTypes.INTEGER,
   },
@@ -27,13 +29,23 @@ History.init( {
     allowNull: false,
     type: DataTypes.STRING,
   },
+  created_at: {
+    allowNull: false,
+    type: DataTypes.DATE,
+    defaultValue: new Date()
+  },
+  updated_at: {
+    allowNull: false,
+    type: DataTypes.DATE,
+    defaultValue: new Date()
+  }
 },
 {
-  modelName: 'history',
+  modelName: 'histories',
   sequelize: database,
   timestamps: false,
 },)
 
-History.belongsTo(Content, { foreignKey: 'content', as: 'contentById' });
+History.belongsTo(Content, { foreignKey: 'content_id', as: 'contentById' });
 
 export default History;

@@ -9,14 +9,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      contentId: {
+      content_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        field: 'content_id',
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         references: {
-          model: 'Contents',
+          model: 'contents',
           key: 'id'
         }
       },
@@ -27,16 +26,14 @@ module.exports = {
       corpo: {
         type: Sequelize.STRING
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE,
-        field: 'created_at',
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE,
-        field: 'updated_at',
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     });

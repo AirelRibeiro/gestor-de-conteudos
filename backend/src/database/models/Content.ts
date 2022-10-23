@@ -5,6 +5,8 @@ class Content extends Model {
   id!: number;
   titulo!: string;
   corpo?: string;
+  created_at!: Date;
+  updated_at!: Date;
 }
 
 Content.init(
@@ -21,10 +23,20 @@ Content.init(
     corpo: {
       allowNull: true,
       type: DataTypes.STRING,
+    },
+    created_at: {
+      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: new Date()
+    },
+    updated_at: {
+      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: new Date()
     }
   },
   {
-    modelName: 'Contents',
+    modelName: 'contents',
     underscored: true,
     sequelize: db,
   },
