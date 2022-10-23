@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm run build && node ./build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc",
     "db:reset": "npx -y tsc && npx sequelize-cli db:drop && npx sequelize-cli db:create",
-    "db:migrate": "npx sequelize db:migrate",
-    "start": "npm run build && node ./build/index.js && npm run db:migrate && npm run db:reset"
+    "db:migrate": "npx sequelize db:migrate"
   },
   "keywords": [],
   "author": "",
