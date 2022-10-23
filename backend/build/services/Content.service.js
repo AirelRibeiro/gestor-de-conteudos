@@ -40,6 +40,9 @@ class ContentService {
     }
     update(id, content) {
         return __awaiter(this, void 0, void 0, function* () {
+            const lastcontent = yield this.contentModel.findByPk(id);
+            if (!lastcontent)
+                throw new Error('contentNotFound');
             return this.contentModel.update(content, { where: { id } }).then(() => __awaiter(this, void 0, void 0, function* () {
                 this.historyModel.create({
                     content_id: id,
@@ -52,6 +55,9 @@ class ContentService {
     }
     delete(id) {
         return __awaiter(this, void 0, void 0, function* () {
+            const lastcontent = yield this.contentModel.findByPk(id);
+            if (!lastcontent)
+                throw new Error('contentNotFound');
             return this.contentModel.destroy({ where: { id } }).then(() => {
                 return { message: 'Conteúdo excluído com sucesso!' };
             }).catch(() => { throw new Error('contentNotFound'); });

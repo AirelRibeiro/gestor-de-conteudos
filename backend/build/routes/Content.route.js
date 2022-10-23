@@ -33,21 +33,22 @@ const History_1 = __importDefault(require("../database/models/History"));
 const Content_service_1 = __importDefault(require("../services/Content.service"));
 const History_service_1 = __importDefault(require("../services/History.service"));
 const Content_controller_1 = __importDefault(require("../controllers/Content.controller"));
+const validateContent_1 = __importDefault(require("../middlewares/validateContent"));
 const contentRoute = express.Router();
 const contentController = new Content_controller_1.default(new Content_service_1.default(Content_1.default, History_1.default), new History_service_1.default(History_1.default));
-contentRoute.post('/', (req, res) => {
+contentRoute.post('/', validateContent_1.default, (req, res) => {
     contentController.create(req, res);
 });
-contentRoute.get('/:id', (req, res) => {
-    contentController.findHistory(req, res);
+contentRoute.get('/:id', (req, res, next) => {
+    contentController.findHistory(req, res, next);
 });
 contentRoute.get('/', (req, res) => {
     contentController.findAll(req, res);
 });
-contentRoute.put('/:id', (req, res) => {
-    contentController.update(req, res);
+contentRoute.put('/:id', validateContent_1.default, (req, res, next) => {
+    contentController.update(req, res, next);
 });
-contentRoute.delete('/:id', (req, res) => {
-    contentController.delete(req, res);
+contentRoute.delete('/:id', (req, res, next) => {
+    contentController.delete(req, res, next);
 });
 exports.default = contentRoute;

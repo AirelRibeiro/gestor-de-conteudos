@@ -20,12 +20,17 @@ class ContentController {
             return res.status(200).json(contents);
         });
     }
-    findHistory(req, res) {
+    findHistory(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const content = yield this.contentService.findByPk(Number(id));
-            const history = yield this.historyService.findHistoryById(Number(id));
-            return res.status(200).json({ content, history });
+            try {
+                const { id } = req.params;
+                const content = yield this.contentService.findByPk(Number(id));
+                const history = yield this.historyService.findHistoryById(Number(id));
+                return res.status(200).json({ content, history });
+            }
+            catch (err) {
+                return next(err);
+            }
         });
     }
     create(req, res) {
@@ -34,18 +39,28 @@ class ContentController {
             return res.status(201).json(content);
         });
     }
-    update(req, res) {
+    update(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const message = yield this.contentService.update(Number(id), req.body);
-            return res.status(200).json(message);
+            try {
+                const { id } = req.params;
+                const message = yield this.contentService.update(Number(id), req.body);
+                return res.status(200).json(message);
+            }
+            catch (err) {
+                return next(err);
+            }
         });
     }
-    delete(req, res) {
+    delete(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const message = yield this.contentService.delete(Number(id));
-            return res.status(200).json(message);
+            try {
+                const { id } = req.params;
+                const message = yield this.contentService.delete(Number(id));
+                return res.status(200).json(message);
+            }
+            catch (err) {
+                return next(err);
+            }
         });
     }
 }
