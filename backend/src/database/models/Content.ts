@@ -38,6 +38,7 @@ Content.init(
   {
     modelName: 'contents',
     underscored: true,
+    timestamps: false,
     sequelize: db,
   },
 );
