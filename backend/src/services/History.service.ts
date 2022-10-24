@@ -6,7 +6,12 @@ class HistoryService {
   ) {}
   
   async findHistoryById(id: number): Promise<HistoryModel[]> {
-    const history = await this.historyModel.findAll({ where: { content_id: id } });
+    const history = await this.historyModel.findAll({
+      where: { content_id: id },
+      order: [
+        ['created_at', 'DESC'],
+      ]       
+    });
     return history;
   }
 
