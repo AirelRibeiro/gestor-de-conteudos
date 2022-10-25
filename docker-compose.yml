@@ -12,6 +12,8 @@ services:
       test: ["CMD", "lsof", "-t", "-i:3000"]
       timeout: 10s
       retries: 5
+    volumes:
+      - ./frontend/src:/app-frontend/src
   backend:
     container_name: app_backend
     build: ./backend
