@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Stardos+Stencil&display=swap');
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#header {
+  background-color: rgba(0, 0, 0, 0.774);
+  display: flex;
+  height: 15vh;
+  justify-content: space-evenly;
+  padding-bottom: 1vh;
+  padding-top: 1vh;
+}
+
+a {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Stardos Stencil', cursive;
+  font-size: 1.2em;
+  text-decoration: none;
+  width: 20%;
+}
+
+.header-icons {
+  height: 10vh;
+  padding-bottom: 1vh;
+}
