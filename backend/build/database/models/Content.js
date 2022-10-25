@@ -34,6 +34,7 @@ Content.init({
 }, {
     modelName: 'contents',
     underscored: true,
+    timestamps: false,
     sequelize: _1.default,
 });
 exports.default = Content;
