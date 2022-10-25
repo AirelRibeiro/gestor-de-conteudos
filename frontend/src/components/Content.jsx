@@ -25,7 +25,7 @@ export default function Content(props) {
         />
       <input
         type="button"
-        value="Excluirr"
+        value="Excluir"
         className="button"
         onClick={deleteFunction}
         />
