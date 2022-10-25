@@ -9,6 +9,11 @@ export const requestGetAll = async () => {
   return data;
 };
 
+export const requestWithQuery = async (query) => {
+  const { data } = await API.get(query);
+  return data;
+};
+
 export const requestDelete = async (id) => {
   const { data } = await API.delete(`/${id}`);
   return data;
