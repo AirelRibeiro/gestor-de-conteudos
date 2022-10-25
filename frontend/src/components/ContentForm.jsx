@@ -12,7 +12,6 @@ function ContentForm(props) {
 
   return (
       <form className="form">
-        <label htmlFor="title">
           <input
             type="text"
             name="title"
@@ -21,8 +20,6 @@ function ContentForm(props) {
             id="title"
             onChange={onChange}
           />
-        </label>
-        <label htmlFor="body">
           <textarea
           type="textarea"
           rows="5"
@@ -33,11 +30,10 @@ function ContentForm(props) {
           id="body"
           onChange={onChange}
           />
-        </label>
         <input
           type="button"
           value="Salvar"
-          className="button"
+          className="form-button"
           onClick={onClick}
           disabled={title.length < 5}
         />

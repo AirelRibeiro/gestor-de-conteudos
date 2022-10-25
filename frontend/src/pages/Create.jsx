@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ContentForm from '../components/ContentForm';
 import { requestcreate } from '../helpers/apiHelpers';
+import '../style/Form.css';
 
 function Create() {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ function Create() {
 
   return (
     <div className="create">
-      <h1>Create</h1>
+      <h1>Crie um novo conteúdo</h1>
       <ContentForm
         onChange={change}
         onClick={createContent}

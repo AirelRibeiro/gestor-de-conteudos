@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ContentForm from '../components/ContentForm';
 import { requestUpdate } from '../helpers/apiHelpers';
+import '../style/Form.css';
 
 function Update() {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ function Update() {
 
   return (
     <div className="create">
-      <h1>Create</h1>
+      <h1>Atualize seu conteúdo</h1>
       <ContentForm
         onChange={change}
         onClick={updateContent}
