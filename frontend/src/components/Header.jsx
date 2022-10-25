@@ -1,29 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../style/Header.css';
 
 export default function Header() {
   return (
-    <div className="header">
+    <div id="header">
       <Link to="/create">
         <img
-          src="https://img.icons8.com/external-photo3ideastudio-gradient-photo3ideastudio/64/000000/external-note-meeting-photo3ideastudio-gradient-photo3ideastudio.png"
+          src="https://img.icons8.com/external-photo3ideastudio-lineal-photo3ideastudio/512/FFFFFF/external-note-meeting-photo3ideastudio-lineal-photo3ideastudio.png"
           alt="note-icon"
           className="header-icons"
         />
+        <p>Novo conteúdo</p>
       </Link>
       <Link to="/">
         <img
-          src="https://img.icons8.com/nolan/64/home.png"
+          src="https://img.icons8.com/dotty/80/FFFFFF/home.png"
           alt="home-icon"
           className="header-icons"
         />
+        <p>Conteúdos</p>
       </Link>
-      <Link to="/delete">
+      <Link to="/search">
         <img
-          src="https://img.icons8.com/external-icongeek26-outline-gradient-icongeek26/64/000000/external-trash-city-life-icongeek26-outline-gradient-icongeek26.png"
-          alt="trash-icon"
+          src="https://img.icons8.com/pastel-glyph/512/FFFFFF/search--v2.png"
+          alt="magnifying-glass-icon"
           className="header-icons"
+          id="magnifying-glass"
         />
+        <p>Busque conteúdo por nome</p>
       </Link>
     </div>
   );
