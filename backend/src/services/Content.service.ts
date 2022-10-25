@@ -12,7 +12,7 @@ class ContentService {
     return this.historyModel.create({
       content_id: createdContent.id,
       titulo: createdContent.titulo,
-      corpo: !content.corpo ? 'Campo deixado vazio pelo autor vazio.' : content.corpo
+      corpo: !content.corpo ? 'Campo deixado vazio pelo autor.' : content.corpo
     }).then((result) => result );
   }
 
@@ -37,7 +37,7 @@ class ContentService {
       this.historyModel.create({
         content_id: id,
         titulo: content.titulo,
-        corpo: !content.corpo ? 'Campo deixado vazio pelo autor vazio.' : content.corpo
+        corpo: !content.corpo ? 'Campo deixado vazio pelo autor.' : content.corpo
       });
       return { message: 'Conteúdo atualizado com sucesso!' }
     }).catch(() => {throw new Error('contentNotFound')});
