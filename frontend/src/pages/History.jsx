@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Content from '../components/Content';
 import Updates from '../components/Updates';
 import { requestDelete, requestHistory } from '../helpers/apiHelpers';
+import '../style/History.css';
 
 function History() {
   const [information, setInformation] = useState([]);
