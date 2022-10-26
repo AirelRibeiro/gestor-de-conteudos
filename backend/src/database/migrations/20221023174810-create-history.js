@@ -12,7 +12,6 @@ module.exports = {
       content_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         references: {
           model: 'contents',
@@ -24,7 +23,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       corpo: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       created_at: {
         allowNull: false,
