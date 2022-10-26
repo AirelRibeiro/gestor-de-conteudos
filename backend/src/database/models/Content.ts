@@ -22,7 +22,7 @@ Content.init(
     },
     corpo: {
       allowNull: true,
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     created_at: {
       allowNull: false,

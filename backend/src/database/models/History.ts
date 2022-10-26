@@ -27,7 +27,7 @@ History.init( {
   },
   corpo: {
     allowNull: false,
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
   },
   created_at: {
     allowNull: false,
