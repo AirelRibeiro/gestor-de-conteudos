@@ -28,7 +28,7 @@ export default function Header() {
           className="header-icons"
           id="magnifying-glass"
         />
-        <p>Busque conteúdo por nome</p>
+        <p>Busque um conteúdo por título</p>
       </Link>
     </div>
   );
