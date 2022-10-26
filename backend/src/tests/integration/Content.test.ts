@@ -77,3 +77,52 @@ describe('Rota GET /', () => {
     chai.expect(response).to.have.status(200);
   });
 });
+
+describe('Rota GET /:{id}', () => {
+
+  describe('Ao buscar um conteúdo específico que existe', () => {
+
+    beforeEach(async () => {
+      Sinon.stub(Content, 'findByPk').resolves(singleContent as unknown as Content);
+      Sinon.stub(History, 'findAll').resolves(historyById as unknown as History[]);
+    });
+    
+    afterEach(() => Sinon.restore());
+
+    it('Verifica se é retornado o conteúdo correto', async () => {
+      const response = await chai.request(app).get('/4');
+
+      
+      chai.expect(response.body).to.deep.equal({ content: singleContent, history: historyById });
+    });
+
+    it('Verifica se o código de status é 200', async () => {
+      const response = await chai.request(app).get('/4');
+
+      chai.expect(response).to.have.status(200);
+    });
+  });
+
+  describe('Ao buscar um conteúdo que não existe', () => {
+
+    beforeEach(async () => {
+      Sinon.stub(Content, 'findByPk').resolves(null);
+      Sinon.stub(History, 'findAll').resolves();
+    });
+    
+    afterEach(() => Sinon.restore());
+
+    it('Verifica se é retornado o erro correto', async () => {
+      const response = await chai.request(app).get('/11');
+
+      
+      chai.expect(response.body).to.deep.equal({ message: 'O conteúdo com o Id buscado não existe!' });
+    });
+
+    it('Verifica se o código de status é 404', async () => {
+      const response = await chai.request(app).get('/11');
+
+      chai.expect(response).to.have.status(404);
+    });
+  });
+});
