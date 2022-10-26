@@ -15,7 +15,12 @@ class HistoryService {
     }
     findHistoryById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const history = yield this.historyModel.findAll({ where: { content_id: id } });
+            const history = yield this.historyModel.findAll({
+                where: { content_id: id },
+                order: [
+                    ['created_at', 'ASC'],
+                ]
+            });
             return history;
         });
     }

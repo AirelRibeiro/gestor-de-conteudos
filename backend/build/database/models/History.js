@@ -24,7 +24,7 @@ History.init({
     },
     corpo: {
         allowNull: false,
-        type: sequelize_1.DataTypes.STRING,
+        type: sequelize_1.DataTypes.TEXT,
     },
     created_at: {
         allowNull: false,

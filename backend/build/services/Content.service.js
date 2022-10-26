@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const sequelize_1 = require("sequelize");
 class ContentService {
     constructor(contentModel, historyModel) {
         this.contentModel = contentModel;
@@ -20,8 +21,8 @@ class ContentService {
             return this.historyModel.create({
                 content_id: createdContent.id,
                 titulo: createdContent.titulo,
-                corpo: !content.corpo ? 'Campo deixado vazio pelo autor vazio.' : content.corpo
-            }).then((result) => result);
+                corpo: !content.corpo ? 'Campo deixado vazio pelo autor.' : content.corpo
+            }).then(() => createdContent);
         });
     }
     findAll() {
@@ -38,6 +39,20 @@ class ContentService {
             return content;
         });
     }
+    findByName(titulo) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const contents = yield this.contentModel.findAll({
+                where: {
+                    titulo: {
+                        [sequelize_1.Op.like]: `%${titulo}%`
+                    }
+                }
+            });
+            if (!contents.length)
+                throw new Error('contentsNotFound');
+            return contents;
+        });
+    }
     update(id, content) {
         return __awaiter(this, void 0, void 0, function* () {
             const lastcontent = yield this.contentModel.findByPk(id);
@@ -47,10 +62,10 @@ class ContentService {
                 this.historyModel.create({
                     content_id: id,
                     titulo: content.titulo,
-                    corpo: !content.corpo ? 'Campo deixado vazio pelo autor vazio.' : content.corpo
+                    corpo: !content.corpo ? 'Campo deixado vazio pelo autor.' : content.corpo
                 });
                 return { message: 'Conteúdo atualizado com sucesso!' };
-            })).catch(() => { throw new Error('contentNotFound'); });
+            })).catch((err) => { throw new Error(err.message); });
         });
     }
     delete(id) {
@@ -60,7 +75,7 @@ class ContentService {
                 throw new Error('contentNotFound');
             return this.contentModel.destroy({ where: { id } }).then(() => {
                 return { message: 'Conteúdo excluído com sucesso!' };
-            }).catch(() => { throw new Error('contentNotFound'); });
+            }).catch((err) => { throw new Error(err.message); });
         });
     }
 }

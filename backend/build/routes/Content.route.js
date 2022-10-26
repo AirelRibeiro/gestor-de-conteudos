@@ -39,6 +39,9 @@ const contentController = new Content_controller_1.default(new Content_service_1
 contentRoute.post('/', validateContent_1.default, (req, res) => {
     contentController.create(req, res);
 });
+contentRoute.get('/search', (req, res, next) => {
+    contentController.findByTitle(req, res, next);
+});
 contentRoute.get('/:id', (req, res, next) => {
     contentController.findHistory(req, res, next);
 });

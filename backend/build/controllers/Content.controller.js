@@ -33,6 +33,18 @@ class ContentController {
             }
         });
     }
+    findByTitle(req, res, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { title } = req.query;
+                const contents = yield this.contentService.findByName(title);
+                return res.status(200).json(contents);
+            }
+            catch (err) {
+                return next(err);
+            }
+        });
+    }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const content = yield this.contentService.create(req.body);
