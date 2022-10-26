@@ -55,3 +55,25 @@ describe('Rota POST /', () => {
   });
 });
 
+describe('Rota GET /', () => {
+
+  beforeEach(async () => {    
+    Sinon.stub(Content, 'findAll').resolves(contentsArray as unknown as Content[]);
+  });
+  
+  afterEach(() => Sinon.restore());
+
+  it('Verifica se é retornado o número correto conteúdos', async () => {
+    const response = await chai.request(app).get('/');
+
+    
+    chai.expect(response).to.have.status(200);
+    chai.expect(response.body).to.length(10);
+  });
+
+  it('Verifica se o código de status é 200', async () => {
+    const response = await chai.request(app).get('/');
+  
+    chai.expect(response).to.have.status(200);
+  });
+});
