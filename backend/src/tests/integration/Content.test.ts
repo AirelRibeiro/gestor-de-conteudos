@@ -172,3 +172,47 @@ describe('Rota GET /search com query "title"', () => {
   });
 });
 
+describe('Rota PUT /:{id}', () => {
+
+  describe('Ao atualizar um conteúdo que existe', () => {
+    beforeEach(async () => {    
+      Sinon.stub(Content, 'findByPk').resolves(contentsArray[9] as unknown as Content);
+      Sinon.stub(Content, 'update').resolves();
+      Sinon.stub(History, 'create').resolves();
+    });
+    
+    afterEach(() => Sinon.restore());
+  
+    it('Verifica se é retornada a mensagem correta', async () => {
+      const response = await chai.request(app).put('/10').send(contentToUpdate);
+  
+      chai.expect(response.body).to.deep.equal(updatedMessage);
+    });
+  
+    it('Verifica se o código de status é 200', async () => {
+      const response = await chai.request(app).put('/10').send(contentToUpdate);
+    
+      chai.expect(response).to.have.status(200);
+    });
+  });
+
+  describe('Ao tentar atualizar um conteúdo que não existe', () => {
+    beforeEach(async () => {   
+      Sinon.stub(Content, 'findByPk').resolves(null);
+    });
+    
+    afterEach(() => Sinon.restore());
+  
+    it('Verifica se é retornado o erro correto', async () => {
+      const response = await chai.request(app).put('/11').send(contentToUpdate);
+  
+      chai.expect(response.body).to.deep.equal({ message: 'O conteúdo com o Id buscado não existe!' });
+    });
+  
+    it('Verifica se o código de status é 404', async () => {
+      const response = await chai.request(app).put('/11').send(contentToUpdate);
+    
+      chai.expect(response).to.have.status(404);
+    });
+  });
+});
