@@ -1,5 +1,6 @@
 import ContentModel from '../database/models/Content';
 import HistoryModel from '../database/models/History';
+import { Op } from 'sequelize';
 
 class ContentService {
   constructor(
@@ -13,7 +14,7 @@ class ContentService {
       content_id: createdContent.id,
       titulo: createdContent.titulo,
       corpo: !content.corpo ? 'Campo deixado vazio pelo autor.' : content.corpo
-    }).then((result) => result );
+    }).then(() => createdContent );
   }
 
   async findAll(): Promise<ContentModel[]> {
@@ -26,7 +27,20 @@ class ContentService {
 
     if (!content) throw new Error('contentNotFound');
 
-    return content
+    return content;
+  }
+
+  async findByName(titulo: string): Promise<ContentModel[]> {
+    const contents = await this.contentModel.findAll({
+      where: {
+        titulo: {
+          [Op.like]: `%${titulo}%`
+        }
+      }
+    });
+    if(!contents.length) throw new Error('contentsNotFound');
+
+    return contents;
   }
 
   async update(id: number, content: ContentModel): Promise<object> {
@@ -40,7 +54,7 @@ class ContentService {
         corpo: !content.corpo ? 'Campo deixado vazio pelo autor.' : content.corpo
       });
       return { message: 'Conteúdo atualizado com sucesso!' }
-    }).catch(() => {throw new Error('contentNotFound')});
+    }).catch((err) => {throw new Error(err.message)});
   }
 
   async delete(id: number): Promise<object> {
@@ -48,7 +62,7 @@ class ContentService {
     if (!lastcontent) throw new Error('contentNotFound');
     return this.contentModel.destroy({ where: { id } }).then(() => {
       return { message: 'Conteúdo excluído com sucesso!' }
-    }).catch(() => {throw new Error('contentNotFound')});
+    }).catch((err) => {throw new Error(err.message)});
   }
 }
 
