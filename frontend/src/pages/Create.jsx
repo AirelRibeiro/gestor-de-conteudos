@@ -17,7 +17,7 @@ function Create() {
       insertedContent = await requestcreate({ titulo: title, corpo: body });
     }
     setContent({ title: '', body: '' });
-    navigate(`/${insertedContent.content_id}`);
+    navigate(`/${insertedContent.id}`);
   }
 
   function change({target}) {
