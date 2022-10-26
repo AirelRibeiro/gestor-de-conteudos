@@ -24,6 +24,16 @@ class ContentController {
     }
   }
 
+  async findByTitle(req: Request, res: Response, next: NextFunction): Promise<Response | void>{
+    try {
+      const { title } = req.query;
+      const contents = await this.contentService.findByName(title as string);
+      return res.status(200).json(contents);
+    } catch(err) {
+      return next(err);
+    }
+  }
+
   async create(req: Request, res: Response): Promise<Response> {
     const content = await this.contentService.create(req.body);
     return res.status(201).json(content);
