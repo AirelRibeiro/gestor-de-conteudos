@@ -9,7 +9,7 @@ class HistoryService {
     const history = await this.historyModel.findAll({
       where: { content_id: id },
       order: [
-        ['created_at', 'DESC'],
+        ['created_at', 'ASC'],
       ]       
     });
     return history;
