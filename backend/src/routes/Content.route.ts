@@ -18,6 +18,10 @@ contentRoute.post('/', contentVAlidation, (req, res) => {
   contentController.create(req, res);
 });
 
+contentRoute.get('/search', (req, res, next) => {
+  contentController.findByTitle(req, res, next);
+});
+
 contentRoute.get('/:id', (req, res, next) => {
   contentController.findHistory(req, res, next);
 });
