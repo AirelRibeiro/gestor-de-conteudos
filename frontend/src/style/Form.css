@@ -8,14 +8,22 @@ h1 {
   text-align: center;
 }
 
+#form-page {
+  display: flex;
+  justify-content: center;
+}
+
 .form {
   align-items: center;
-  height: 70vh;
+  align-items: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  height: 55vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: auto;
-  width: 70%;
+  padding: 2.5vh 0;
+  width: 45%;
 }
 
 
@@ -27,7 +35,7 @@ h1 {
   margin: auto;
   height: 8vh;
   text-align: center;
-  width: 50%;
+  width: 60%;
 }
 
 #body {
@@ -38,7 +46,7 @@ h1 {
   height: 25vh;
   padding: 2vh;
   text-align: center;
-  width: 60%;
+  width: 70%;
 }
 
 .form-button {
@@ -53,5 +61,62 @@ h1 {
   font-weight: 700;
   margin: auto;
   padding: 2vh;
-  width: 15vw;
+}
+
+.form-button[disabled]{
+  border: solid black 1px;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+#content-demostration {
+  align-items: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  display: flex;
+  flex-direction: column;
+  height: 55vh;
+  justify-content: space-evenly;
+  margin: 2vh auto;
+  padding: 5vh 4vw;
+  width: 45vw;
+}
+
+#content-demostration h2 {
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 0.2rem;
+  text-align: center;
+  font-size: x-large;
+  margin-bottom: 3vh;
+}
+
+#content-demostration p {
+  font-family: 'Bebas Neue', cursive;
+  height: 20vh;
+  letter-spacing: 0.1rem;
+  font-size: larger;
+  overflow: auto;
+  padding-bottom: 2vh;
+  text-align: justify;
+}
+
+#content-demostration div {
+  display: flex;
+  margin: auto;
+  width: 60%;
+}
+
+label {
+  display: flex;
+  font-family: 'Bebas Neue', cursive;
+  height: 2vh;
+  justify-content: space-evenly;
+  letter-spacing: 0.2rem;
+  font-size: medium;
+  width: 50%;
+}
+
+.checkebox {
+  box-shadow: rgba(11, 11, 19, 0.712) 0px 0px 0px 2px, rgb(141, 141, 141) 0px 0px 0px 4px, rgb(247, 244, 231) 0px 0px 0px 6px, rgb(31, 29, 28) 0px 0px 0px 8px, rgb(216, 206, 206) 0px 0px 0px 10px;
+  height: 1vh;
+  width: 1vh;
 }
