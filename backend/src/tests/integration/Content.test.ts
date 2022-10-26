@@ -126,3 +126,49 @@ describe('Rota GET /:{id}', () => {
     });
   });
 });
+
+describe('Rota GET /search com query "title"', () => {
+
+  describe('Ao buscar um título que existe', () => {
+    beforeEach(async () => {
+    
+      Sinon.stub(Content, 'findAll').resolves(contentsByNameArray as unknown as Content[])
+        .onCall(1).resolves([]);
+    });
+    
+    afterEach(() => Sinon.restore());
+  
+    it('Verifica se é retornado o número correto conteúdos', async () => {
+      const response = await chai.request(app).get('/search').query({title: 'educação' });
+  
+      chai.expect(response.body).to.length(4);
+    });
+  
+    it('Verifica se o código de status é 200', async () => {
+      const response = await chai.request(app).get('/search').query({title: 'educação' });
+    
+      chai.expect(response).to.have.status(200);
+    });
+  });
+
+  describe('Ao buscar um título que não existe', () => {
+    beforeEach(async () => {  
+      Sinon.stub(Content, 'findAll').resolves([]);
+    });
+    
+    afterEach(() => Sinon.restore());
+  
+    it('Verifica se é retornado o erro correto', async () => {
+      const response = await chai.request(app).get('/search').query({title: 'duvidoso' });
+  
+      chai.expect(response.body).to.deep.equal({ message: 'Não existem conteúdos com esse título!' });
+    });
+  
+    it('Verifica se o código de status é 404', async () => {
+      const response = await chai.request(app).get('/search').query({title: 'duvidoso' });
+    
+      chai.expect(response).to.have.status(404);
+    });
+  });
+});
+
