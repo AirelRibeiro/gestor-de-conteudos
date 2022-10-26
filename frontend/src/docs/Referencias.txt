@@ -1,0 +1,3 @@
+Box-shadow usado nos botões e conteúdos tiveram como fonte:
+
+BEAUTIFUL CSS box-shadow examples. 2020. Título da página: 93 Beautiful CSS box-shadow examples - CSS Scan. Disponível em: https://getcssscan.com/css-box-shadow-examples. Acesso em: 25 out. 2022.
