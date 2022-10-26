@@ -216,3 +216,48 @@ describe('Rota PUT /:{id}', () => {
     });
   });
 });
+
+describe('Rota DELETE /:{id}', () => {
+
+  describe('Ao excluir um conteúdo que existe', () => {
+    beforeEach(async () => {
+      Sinon.stub(Content, 'findByPk').resolves(contentsArray[8] as unknown as Content);
+      Sinon.stub(Content, 'destroy').resolves();
+    });
+    
+    afterEach(() => Sinon.restore());
+  
+    it('Verifica se é retornada a mensagem correta', async () => {
+      const response = await chai.request(app).delete('/9');
+  
+      chai.expect(response.body).to.deep.equal(deletedMessage);
+    });
+  
+    it('Verifica se o código de status é 200', async () => {
+      const response = await chai.request(app).delete('/9');
+    
+      chai.expect(response).to.have.status(200);
+    });
+  });
+
+  describe('Ao tentar excluir um conteúdo que não existe', () => {
+    beforeEach(async () => {   
+      Sinon.stub(Content, 'findByPk').resolves(null);
+      Sinon.stub(Content, 'destroy').resolves();
+    });
+    
+    afterEach(() => Sinon.restore());
+  
+    it('Verifica se é retornado o erro correto', async () => {
+      const response = await chai.request(app).delete('/11');
+  
+      chai.expect(response.body).to.deep.equal({ message: 'O conteúdo com o Id buscado não existe!' });
+    });
+  
+    it('Verifica se o código de status é 404', async () => {
+      const response = await chai.request(app).delete('/11');
+    
+      chai.expect(response).to.have.status(404);
+    });
+  });
+});
