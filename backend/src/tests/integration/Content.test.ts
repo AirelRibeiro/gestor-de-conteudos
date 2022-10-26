@@ -261,3 +261,48 @@ describe('Rota DELETE /:{id}', () => {
     });
   });
 });
+
+describe('Tratamento de erros não personalizados', () => {
+
+  describe('Na rota delete', () => {
+    beforeEach(async () => {
+      Sinon.stub(Content, 'findByPk').resolves(contentsArray[8] as unknown as Content);
+      Sinon.stub(Content, 'destroy').rejects(new Error('Erro não personalizado!'));
+    });
+    
+    afterEach(() => Sinon.restore());
+  
+    it('Verifica se é retornada a mensagem do erro', async () => {
+      const response = await chai.request(app).delete('/9');
+  
+      chai.expect(response.body).to.deep.equal({ message: 'Erro não personalizado!' });
+    });
+  
+    it('Verifica se o código de status é 500', async () => {
+      const response = await chai.request(app).delete('/9');
+    
+      chai.expect(response).to.have.status(500);
+    });
+  });
+
+  describe('Na rota update', () => {
+    beforeEach(async () => {    
+      Sinon.stub(Content, 'findByPk').resolves(contentsArray[9] as unknown as Content);
+      Sinon.stub(Content, 'update').rejects(new Error('Erro não customizado!'));
+    });
+    
+    afterEach(() => Sinon.restore());
+  
+    it('Verifica se é retornada a mensagem do erro', async () => {
+      const response = await chai.request(app).put('/10').send(contentToUpdate);
+  
+      chai.expect(response.body).to.deep.equal({ message: 'Erro não customizado!' });
+    });
+  
+    it('Verifica se o código de status é 500', async () => {
+      const response = await chai.request(app).put('/10').send(contentToUpdate);
+    
+      chai.expect(response).to.have.status(500);
+    });
+  });
+});
