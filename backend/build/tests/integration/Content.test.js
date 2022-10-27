@@ -41,11 +41,9 @@ chai.use(chaiHttp);
 const Sinon = __importStar(require("sinon"));
 const app_1 = __importDefault(require("../../app"));
 const Content_1 = __importDefault(require("../../database/models/Content"));
-const sequelize_1 = require("sequelize");
 const History_1 = __importDefault(require("../../database/models/History"));
 const Content_mock_1 = require("../mocks/Content.mock");
 const History_mock_1 = require("../mocks/History.mock");
-// chai.use(chaiHttp);
 describe('Rota POST /', () => {
     describe('Ao inserir o conteúdo com sucesso', () => {
         beforeEach(() => __awaiter(void 0, void 0, void 0, function* () {
@@ -159,7 +157,8 @@ describe('Rota PUT /:{id}', () => {
     describe('Ao atualizar um conteúdo que existe', () => {
         beforeEach(() => __awaiter(void 0, void 0, void 0, function* () {
             Sinon.stub(Content_1.default, 'findByPk').resolves(Content_mock_1.contentsArray[9]);
-            Sinon.stub(sequelize_1.Model, 'update').resolves();
+            Sinon.stub(Content_1.default, 'update').resolves();
+            Sinon.stub(History_1.default, 'create').resolves();
         }));
         afterEach(() => Sinon.restore());
         it('Verifica se é retornada a mensagem correta', () => __awaiter(void 0, void 0, void 0, function* () {
@@ -174,7 +173,6 @@ describe('Rota PUT /:{id}', () => {
     describe('Ao tentar atualizar um conteúdo que não existe', () => {
         beforeEach(() => __awaiter(void 0, void 0, void 0, function* () {
             Sinon.stub(Content_1.default, 'findByPk').resolves(null);
-            Sinon.stub(sequelize_1.Model, 'update').resolves();
         }));
         afterEach(() => Sinon.restore());
         it('Verifica se é retornado o erro correto', () => __awaiter(void 0, void 0, void 0, function* () {
@@ -191,7 +189,7 @@ describe('Rota DELETE /:{id}', () => {
     describe('Ao excluir um conteúdo que existe', () => {
         beforeEach(() => __awaiter(void 0, void 0, void 0, function* () {
             Sinon.stub(Content_1.default, 'findByPk').resolves(Content_mock_1.contentsArray[8]);
-            Sinon.stub(sequelize_1.Model, 'destroy').resolves();
+            Sinon.stub(Content_1.default, 'destroy').resolves();
         }));
         afterEach(() => Sinon.restore());
         it('Verifica se é retornada a mensagem correta', () => __awaiter(void 0, void 0, void 0, function* () {
@@ -206,7 +204,7 @@ describe('Rota DELETE /:{id}', () => {
     describe('Ao tentar excluir um conteúdo que não existe', () => {
         beforeEach(() => __awaiter(void 0, void 0, void 0, function* () {
             Sinon.stub(Content_1.default, 'findByPk').resolves(null);
-            Sinon.stub(sequelize_1.Model, 'destroy').resolves();
+            Sinon.stub(Content_1.default, 'destroy').resolves();
         }));
         afterEach(() => Sinon.restore());
         it('Verifica se é retornado o erro correto', () => __awaiter(void 0, void 0, void 0, function* () {
@@ -216,6 +214,38 @@ describe('Rota DELETE /:{id}', () => {
         it('Verifica se o código de status é 404', () => __awaiter(void 0, void 0, void 0, function* () {
             const response = yield chai.request(app_1.default).delete('/11');
             chai.expect(response).to.have.status(404);
+        }));
+    });
+});
+describe('Tratamento de erros não personalizados', () => {
+    describe('Na rota delete', () => {
+        beforeEach(() => __awaiter(void 0, void 0, void 0, function* () {
+            Sinon.stub(Content_1.default, 'findByPk').resolves(Content_mock_1.contentsArray[8]);
+            Sinon.stub(Content_1.default, 'destroy').rejects(new Error('Erro não personalizado!'));
+        }));
+        afterEach(() => Sinon.restore());
+        it('Verifica se é retornada a mensagem do erro', () => __awaiter(void 0, void 0, void 0, function* () {
+            const response = yield chai.request(app_1.default).delete('/9');
+            chai.expect(response.body).to.deep.equal({ message: 'Erro não personalizado!' });
+        }));
+        it('Verifica se o código de status é 500', () => __awaiter(void 0, void 0, void 0, function* () {
+            const response = yield chai.request(app_1.default).delete('/9');
+            chai.expect(response).to.have.status(500);
+        }));
+    });
+    describe('Na rota update', () => {
+        beforeEach(() => __awaiter(void 0, void 0, void 0, function* () {
+            Sinon.stub(Content_1.default, 'findByPk').resolves(Content_mock_1.contentsArray[9]);
+            Sinon.stub(Content_1.default, 'update').rejects(new Error('Erro não customizado!'));
+        }));
+        afterEach(() => Sinon.restore());
+        it('Verifica se é retornada a mensagem do erro', () => __awaiter(void 0, void 0, void 0, function* () {
+            const response = yield chai.request(app_1.default).put('/10').send(Content_mock_1.contentToUpdate);
+            chai.expect(response.body).to.deep.equal({ message: 'Erro não customizado!' });
+        }));
+        it('Verifica se o código de status é 500', () => __awaiter(void 0, void 0, void 0, function* () {
+            const response = yield chai.request(app_1.default).put('/10').send(Content_mock_1.contentToUpdate);
+            chai.expect(response).to.have.status(500);
         }));
     });
 });
