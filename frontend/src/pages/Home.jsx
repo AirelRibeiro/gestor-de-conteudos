@@ -20,13 +20,13 @@ function Home() {
   async function deleteOne(id) {
     const result = await requestDelete(id);
     alert(result.message);
-    window.location.reload()
+    window.location.reload();
   }
 
   async function deleteMany() {
     const result = await Promise.all(checked.map((id) => requestDelete(id)));
     alert(`${result.length} conteúdos foram excluídos com sucesso!`);
-    window.location.reload()
+    window.location.reload();
   }
 
   async function checkFunction(id) {
