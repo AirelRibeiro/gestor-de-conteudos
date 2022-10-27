@@ -12,7 +12,7 @@ export default function Updates(props) {
           <p className="update-body">
             {content.corpo}
           </p>
-          <p>
+          <p className="history-dates">
             <strong>Atualização feita em: </strong>
             {` ${new Date(content.created_at)}`}
           </p>
