@@ -13,7 +13,10 @@ function History() {
   useEffect(() => {
     async function fetchData(id) {
       const data = await requestHistory(id);
-      setInformation([data.content, data.history]);
+      const history = data.history.sort((a, b) =>{
+        return (new Date(b.created_at)).getTime() - (new Date(a.created_at)).getTime() 
+      })
+      setInformation([data.content, history]);
     }
     fetchData(location.pathname);
   }, [location]);
