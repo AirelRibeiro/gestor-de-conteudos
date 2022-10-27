@@ -17,5 +17,7 @@
 ### Backend:
 
 <p align="justify">A ligação entre o banco de dados e o frontend é feita por meio de uma <strong>API RESTful</strong>, contando com as camadas <strong>MSC</strong> (Model, Service e Controller), com uma camada adicional de <strong>middlewares</strong> para validação de requeste e tratamento de erros. A API foi contruída em <strong>Node.js</strong> e teve seus endpoints estruturados com uso do <strong>Express</strong>; a manipulação do banco de dados foi facilitada pelo uso da <strong>ORM Sequelize</strong>.</p>
-<p align="justify">A linguagem de desenvolvimento utilizada foi <strong>Typescript</strong>, aplicando conceitos de <strong>POO</strong>.</p>
+<p align="justify">O desenvolvimento foi orientado ao comportamento, utilizando <strong>Typescript</strong> e aplicando conceitos de <strong>Programação Orientada a Objetos</strong>. Os testes foram desenvolvidos utilizando <strong>Mocha</strong>, <strong>Chai</strong>, <strong>Chai-http</strong> e <strong>Sinon</strong>. A documentação completa das rotas da API pode ser encontrada no <a href="https://www.postman.com/" >Postman</a>, clicando no ícone abaixo</p>
+
+[![View Documentation](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/22527230/2s84LF4bz7)
 
