@@ -9,7 +9,9 @@
     "test:coverage": "nyc npm run test",
     "build": "npx tsc",
     "db:reset": "npx -y tsc && npx sequelize-cli db:drop && npx sequelize-cli db:create",
-    "db:migrate": "npx sequelize db:migrate"
+    "db:migrate": "npx sequelize db:migrate",
+    "db:seed": "npx sequelize-cli db:seed:all",
+    "prepare:db": "npm run db:reset && npm run db:migrate && npm run db:seed"
   },
   "keywords": [],
   "author": "",
