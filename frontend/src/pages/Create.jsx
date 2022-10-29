@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ContentForm from '../components/ContentForm';
+import Demonstration from '../components/Demonstration';
+import Form from '../components/Form';
 import { requestcreate } from '../helpers/apiHelpers';
 import '../style/Form.css';
 
@@ -11,7 +12,7 @@ function Create() {
   async function createContent() {
     const { title, body } = content;
     let insertedContent;
-    if(!body) {
+    if (!body) {
       insertedContent = await requestcreate({ titulo: title });
     } else {
       insertedContent = await requestcreate({ titulo: title, corpo: body });
@@ -20,22 +21,27 @@ function Create() {
     navigate(`/${insertedContent.id}`);
   }
 
-  function change({target}) {
-    const { name, value } = target;
-    setContent({ ...content, [name]: value })
+  function changeTitle({ target: { value } }) {
+    setContent({ ...content, title: value });
+  }
+
+  function changeBody(newBody) {
+    setContent({ ...content, body: newBody });
   }
 
   return (
     <div className="create">
       <h1>Crie um novo conteúdo</h1>
-      <ContentForm
-        onChange={change}
-        onClick={createContent}
-        plchT="Título"
-        plchB="Conteúdo"
-        title={content.title}
-        body={content.body}
-      />
+      <div id="form-page">
+        <Form
+          body={content.body}
+          title={content.title}
+          changeTitle={changeTitle}
+          changeBody={changeBody}
+          onClick={createContent}
+        />
+        <Demonstration title={content.title} body={content.body} />
+      </div>
     </div>
   );
 }
