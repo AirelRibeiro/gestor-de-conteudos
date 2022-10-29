@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style/ContentCard.css';
+import '../style/ContentCards.css';
 
 function Demostration(props) {
   const { title, body } = props;

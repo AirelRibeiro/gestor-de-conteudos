@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import '../style/ContentCard.css';
+import '../style/ContentCards.css';
 
 function ContentCard(props) {
   const { information, checkFunction, deleteOne } = props;
