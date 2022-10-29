@@ -39,6 +39,7 @@ export default function Content(props) {
           type="button"
           value="Consultar histórico de atualizações"
           className="button"
+          id="history-button"
           onClick={() => setShowHistory(!showHistory)}
         />
         <input

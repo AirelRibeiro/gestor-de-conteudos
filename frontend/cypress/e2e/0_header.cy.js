@@ -2,6 +2,7 @@ describe('Componente global Header', () => {
 
   beforeEach(() => {
     cy.visit('/1');
+    cy.viewport(1440, 900);
   });
 
   it('Verifica que o primeiro link leva a página de criação de conteúdo', () => {
