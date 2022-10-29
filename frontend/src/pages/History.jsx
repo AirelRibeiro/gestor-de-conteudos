@@ -14,9 +14,11 @@ function History() {
   useEffect(() => {
     async function fetchData(id) {
       const data = await requestHistory(id);
-      const history = data.history.sort((a, b) =>{
-        return (new Date(b.created_at)).getTime() - (new Date(a.created_at)).getTime() 
-      })
+      const history = data.history.sort((a, b) => {
+        return (
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        );
+      });
       setInformation([data.content, history]);
     }
     fetchData(location.pathname);
@@ -26,7 +28,7 @@ function History() {
     const id = location.pathname.split('/')[1];
     const result = await requestDelete(id);
     alert(result.message);
-    navigate('../')
+    navigate('../');
   }
 
   return (
