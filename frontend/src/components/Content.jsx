@@ -5,9 +5,14 @@ export default function Content(props) {
   return (
     <div id="content-history">
       <h1>{content.titulo}</h1>
-      <p id="content-body">
-        {content.corpo ? content.corpo : 'Sem conteúdo'}
-      </p>
+      {content.corpo ? (
+        <div
+          id="content-body"
+          dangerouslySetInnerHTML={{ __html: content.corpo }}
+        />
+      ) : (
+        <h2>'Sem conteúdo'</h2>
+      )}
       <div id="dates">
         <div>
           <p className="dates">
