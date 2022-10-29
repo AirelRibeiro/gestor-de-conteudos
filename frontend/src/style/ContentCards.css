@@ -1,66 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Stardos+Stencil&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-h1 {
-  font-family: 'Stardos Stencil', cursive;
-  font-size: 2.5em;
-  letter-spacing: 0.3rem;
-  margin: 3vh auto;
-  text-align: center;
-}
-
-#form-page {
-  align-items: center;
+#contents {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  margin: auto;
+  width: 90%;
 }
 
-.form {
-  align-items: center;
+.single-content {
   align-items: center;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-  height: 75vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin: auto;
-  width: 80%;
+  height: 55vh;
+  justify-content: space-evenly;
+  margin: 2vh auto;
+  padding: 5vh 4vw;
+  width: 50vw;
 }
 
-#title {
-  border: none;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  font-family: 'Stardos Stencil', cursive;
-  font-size: 1.5em;
-  margin: auto;
-  height: 8vh;
+.single-content h2 {
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 0.2rem;
+  font-size: 1.3em;
+  margin-bottom: 1vh;
   text-align: center;
-  width: 60%;
 }
 
-.form-button {
+.body {
+  background-color: whitesmoke;
+  height: 50%;
+  overflow: auto;
+  padding: 2vh;
+  width: 90%;
+}
+
+.div-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
+  width: 500px;
+}
+
+.check-label,
+.content-button {
   background-color: rgba(0, 0, 0, 0.774);
+  border: none;
+  border-radius: 50px;
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
     rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
     rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
     rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
     rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-  border: none;
-  border-radius: 50px;
   color: white;
   font-family: 'Bebas Neue', cursive;
-  letter-spacing: 0.2rem;
-  font-size: large;
+  font-size: medium;
   font-weight: 700;
+  letter-spacing: 0.2rem;
   margin: auto;
-  padding: 2vh;
+  padding: 1.5vh;
 }
 
-.form-button[disabled] {
-  border: solid black 1px;
-  background-color: #cccccc;
-  color: #666666;
+.content-checkebox {
+  margin-right: 1vw;
 }

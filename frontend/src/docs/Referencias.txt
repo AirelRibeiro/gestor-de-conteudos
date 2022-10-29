@@ -1,3 +1,7 @@
 Box-shadow usado nos botões e conteúdos tiveram como fonte:
 
 BEAUTIFUL CSS box-shadow examples. 2020. Título da página: 93 Beautiful CSS box-shadow examples - CSS Scan. Disponível em: https://getcssscan.com/css-box-shadow-examples. Acesso em: 25 out. 2022.
+
+Editor wysiwyg, foi usado o editor de código aberto TinyMCE, fonte:
+
+TINYMCE. TinyMCE 6 Documentation. 2022. Disponível em: https://www.tiny.cloud/docs/tinymce/6/. Acesso em: 28 out. 2022.
