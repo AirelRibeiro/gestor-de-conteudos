@@ -7,6 +7,7 @@ import '../style/History.css';
 
 function History() {
   const [information, setInformation] = useState([]);
+  const [showHistory, setShowHistory] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -30,8 +31,17 @@ function History() {
 
   return (
     <div className="history">
-      { information.length && <Content content={information[0]} update={navigate} deleteFunction={deleteFunction} /> }
-      { information.length && <Updates updates={information[1]} /> }
+      {information.length && (
+        <Content
+          content={information[0]}
+          update={navigate}
+          deleteFunction={deleteFunction}
+          showHistory={showHistory}
+          setShowHistory={setShowHistory}
+        />
+      )}
+
+      {showHistory && <Updates updates={information[1]} />}
     </div>
   );
 }
