@@ -1,7 +1,8 @@
 import React from 'react';
 
 export default function Content(props) {
-  const { content, update, deleteFunction } = props;
+  const { content, update, deleteFunction, showHistory, setShowHistory } =
+    props;
   return (
     <div id="content-history">
       <h1>{content.titulo}</h1>
@@ -37,6 +38,12 @@ export default function Content(props) {
           value="Atualizar"
           className="button"
           onClick={() => update(`/update/${content.id}`)}
+        />
+        <input
+          type="button"
+          value="Consultar histórico de atualizações"
+          className="button"
+          onClick={() => setShowHistory(!showHistory)}
         />
         <input
           type="button"
