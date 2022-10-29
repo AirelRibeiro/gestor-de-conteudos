@@ -39,7 +39,7 @@ function Home() {
 
   return (
     <div id="home">
-      <h1>Conteúdos</h1>
+      <h1>Conteúdos Motrix</h1>
       <input
             type="button"
             value="Excluir conteúdos selecionados"
