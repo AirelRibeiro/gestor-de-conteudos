@@ -19,17 +19,13 @@ export default function Content(props) {
           <p className="dates">
             <strong>Data de criação</strong>
           </p>
-          <p className="dates">
-            {` ${new Date(content.created_at)}`}
-          </p>
+          <p className="dates">{` ${new Date(content.created_at)}`}</p>
         </div>
         <div>
           <p className="dates">
-              <strong>Última atualização</strong>
+            <strong>Última atualização</strong>
           </p>
-          <p className="dates">
-              {` ${new Date(content.updated_at)}`}
-          </p>
+          <p className="dates">{` ${new Date(content.updated_at)}`}</p>
         </div>
       </div>
       <div id="buttons">
