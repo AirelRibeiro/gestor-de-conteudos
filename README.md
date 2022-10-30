@@ -17,7 +17,7 @@
 
   ### Banco de dados:
 
-  <p align="justify">O banco de dados da aplicação é o Motrix, suportado pelo MySQL, um sistema de gerenciamento de bancos de dados relacionais open-source. O banco conta com duas tabelas, uma para armazenar os conteúdos, denominada <strong>contents</strong> e outra para armazenar o histórico das alterações feitas nos conteúdos ao longo do tempo,denominada <strong>histories</strong>. As tabelas possuem campos e relacionamento conforme demonstrado no esque abaixo: </p>
+  <p align="justify">O banco de dados da aplicação é o Motrix, suportado pelo <strong>MySQL</strong>, um sistema de gerenciamento de bancos de dados relacionais open-source. O banco conta com duas tabelas, uma para armazenar os conteúdos, denominada <strong>contents</strong> e outra para armazenar o histórico das alterações feitas nos conteúdos ao longo do tempo,denominada <strong>histories</strong>. As tabelas possuem campos e relacionamento conforme demonstrado no esque abaixo: </p>
 
   ![image](https://user-images.githubusercontent.com/98190806/198350462-024589a1-8c00-4c0c-ad4f-3c0ba390ff93.png)
 
