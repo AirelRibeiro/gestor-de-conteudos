@@ -7,8 +7,8 @@ function ContentCard(props) {
 
   return (
     <div id="contents">
-      {information.map((content) => (
-        <div className="single-content">
+      {information.map((content, i) => (
+        <div className="single-content" key={i}>
           <h2 className="title">{content.titulo}</h2>
           <div
             className="body"
