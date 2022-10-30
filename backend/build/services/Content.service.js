@@ -44,9 +44,11 @@ class ContentService {
             const contents = yield this.contentModel.findAll({
                 where: {
                     titulo: {
-                        [sequelize_1.Op.like]: `%${titulo}%`
-                    }
-                }
+                order: [
+                    ['titulo', 'ASC'],
+                    ['created_at', 'ASC'],
+                    ['updated_at', 'ASC'],
+                ],
             });
             if (!contents.length)
                 throw new Error('contentsNotFound');
