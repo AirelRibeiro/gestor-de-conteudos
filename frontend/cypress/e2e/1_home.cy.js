@@ -34,6 +34,6 @@ describe('Página Home', () => {
       .should(($input) => {
         $input[1].click();
     });
-    cy.url().should('include', '/1');
+    cy.url().should('include', '/4');
   });
 });
