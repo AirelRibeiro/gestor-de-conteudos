@@ -2,6 +2,7 @@ describe('Página Create', () => {
 
   beforeEach(() => {
     cy.visit('/create');
+    cy.viewport(1440, 900);
   });
 
   it('Verifica se todos os elementos iniciais são renderizados', () => {
@@ -14,7 +15,7 @@ describe('Página Create', () => {
         expect($input[3]).to.have.value('Excluir');
       });
     cy.contains('Crie um novo conteúdo').should('be.visible');
-    cy.contains('Marque para exclusão').should('be.visible');
+    cy.contains('Exclusão conjunta').should('be.visible');
   });
 
   it('Verifica que o botão "Salvar está desabilitado até que a pessoa usuária tenha digitado ao menos 5 caracteres"', () => {
@@ -33,19 +34,14 @@ describe('Página Create', () => {
     });
   });
 
-  it('Verifica se o que é colocado como título e conteúdo aparece na div de demonstração"', () => {
+  it('Verifica que é possível preencher o título e vê-lo na demontração', () => {
     cy.get('#title').type('Motrix');
 
-    cy.get('#content-demostration h2').contains('Motrix');
-
-    cy.get('#body').type('Somos movidos pela ciência, evidência, comprovação e transformação.');
-
-    cy.get('#content-demostration p').contains('Somos movidos pela ciência, evidência, comprovação e transformação.');
+    cy.get('.single-content h2').contains('Motrix');
   });
 
   it('Verifica que é possível salvar um conteúdo e ser redirecionado para a página de histórico', () => {
     cy.get('#title').type('Motrix');
-    cy.get('#body').type('Somos movidos pela ciência, evidência, comprovação e transformação.');
 
     cy.get('input')
       .should(($input) => {
@@ -75,7 +71,7 @@ describe('Página Update', () => {
         expect($input[3]).to.have.value('Excluir');
       });
     cy.contains('Atualize seu conteúdo').should('be.visible');
-    cy.contains('Marque para exclusão').should('be.visible');
+    cy.contains('Exclusão conjunta').should('be.visible');
   });
 
   it('Verifica que o botão "Salvar está desabilitado até que a pessoa usuária tenha digitado ao menos 5 caracteres"', () => {
@@ -94,19 +90,15 @@ describe('Página Update', () => {
     });
   });
 
-  it('Verifica se o que é colocado como título e conteúdo aparece na div de demonstração"', () => {
+  it('Verifica que é possível preencher o título e vê-lo na demontração"', () => {
     cy.get('#title').type('Motrix');
 
-    cy.get('#content-demostration h2').contains('Motrix');
+    cy.get('.single-content h2').contains('Motrix');
 
-    cy.get('#body').type('Somos movidos pela ciência, evidência, comprovação e transformação.');
-
-    cy.get('#content-demostration p').contains('Somos movidos pela ciência, evidência, comprovação e transformação.');
   });
 
   it('Verifica que é possível salvar um conteúdo e ser redirecionado para a página de histórico', () => {
     cy.get('#title').type('Motrix');
-    cy.get('#body').type('Somos movidos pela ciência, evidência, comprovação e transformação.');
 
     cy.get('input')
       .should(($input) => {

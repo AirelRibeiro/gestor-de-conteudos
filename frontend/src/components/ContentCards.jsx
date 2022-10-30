@@ -7,9 +7,9 @@ function ContentCard(props) {
 
   return (
     <div id="contents">
-      {information.map((content) => (
-        <div className="single-content">
-          <h2>{content.titulo}</h2>
+      {information.map((content, i) => (
+        <div className="single-content" key={i}>
+          <h2 className="title">{content.titulo}</h2>
           <div
             className="body"
             dangerouslySetInnerHTML={{ __html: content.corpo }}

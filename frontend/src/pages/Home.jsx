@@ -10,7 +10,6 @@ function Home() {
   useEffect(() => {
     async function fetchData() {
       const data = await requestGetAll();
-      console.log(data);
       setInformation(data);
     }
     fetchData();

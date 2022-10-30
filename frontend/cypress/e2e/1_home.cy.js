@@ -2,10 +2,11 @@ describe('Página Home', () => {
 
   beforeEach(() => {
     cy.visit('/');
+    cy.viewport(1440, 900);
   });
 
   it('Verifica se todos os conteúdos são renderizados', () => {
-    cy.get('.home-single-content')
+    cy.get('.single-content')
       .should(($content) => {
         expect($content).to.have.length(10);
       });
@@ -19,11 +20,11 @@ describe('Página Home', () => {
         expect($input[1]).to.value('Mais informações')
         expect($input[2]).to.value('Excluir')
     });
-    cy.contains('Marque para exclusão');
+    cy.contains('Exclusão conjunta');
   });
 
   it('Verifica se todos os conteúdos possuem título', () => {
-    cy.get('h2').should(($title) => {
+    cy.get('.title').should(($title) => {
       expect($title).to.have.length(10);
     });
   });
@@ -33,6 +34,6 @@ describe('Página Home', () => {
       .should(($input) => {
         $input[1].click();
     });
-    cy.url().should('include', '/1');
+    cy.url().should('include', '/4');
   });
 });
