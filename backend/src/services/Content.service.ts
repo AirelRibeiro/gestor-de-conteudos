@@ -10,15 +10,25 @@ class ContentService {
 
   async create(content: ContentModel): Promise<ContentModel> {
     const createdContent = await this.contentModel.create(content as any);
-    return this.historyModel.create({
-      content_id: createdContent.id,
-      titulo: createdContent.titulo,
-      corpo: !content.corpo ? 'Campo deixado vazio pelo autor.' : content.corpo
-    }).then(() => createdContent );
+    return this.historyModel
+      .create({
+        content_id: createdContent.id,
+        titulo: createdContent.titulo,
+        corpo: !content.corpo
+          ? 'Campo deixado vazio pelo autor.'
+          : content.corpo,
+      })
+      .then(() => createdContent);
   }
 
   async findAll(): Promise<ContentModel[]> {
-    const contents = await this.contentModel.findAll();
+    const contents = await this.contentModel.findAll({
+      order: [
+        ['titulo', 'ASC'],
+        ['created_at', 'ASC'],
+        ['updated_at', 'ASC'],
+      ],
+    });
     return contents;
   }
 
@@ -34,11 +44,16 @@ class ContentService {
     const contents = await this.contentModel.findAll({
       where: {
         titulo: {
-          [Op.like]: `%${titulo}%`
-        }
-      }
+          [Op.like]: `%${titulo}%`,
+        },
+      },
+      order: [
+        ['titulo', 'ASC'],
+        ['created_at', 'ASC'],
+        ['updated_at', 'ASC'],
+      ],
     });
-    if(!contents.length) throw new Error('contentsNotFound');
+    if (!contents.length) throw new Error('contentsNotFound');
 
     return contents;
   }
@@ -47,22 +62,34 @@ class ContentService {
     const lastcontent = await this.contentModel.findByPk(id);
     if (!lastcontent) throw new Error('contentNotFound');
 
-    return this.contentModel.update(content, { where: { id } }).then(async () => {
-      this.historyModel.create({
-        content_id: id,
-        titulo: content.titulo,
-        corpo: !content.corpo ? 'Campo deixado vazio pelo autor.' : content.corpo
+    return this.contentModel
+      .update(content, { where: { id } })
+      .then(async () => {
+        this.historyModel.create({
+          content_id: id,
+          titulo: content.titulo,
+          corpo: !content.corpo
+            ? 'Campo deixado vazio pelo autor.'
+            : content.corpo,
+        });
+        return { message: 'Conteúdo atualizado com sucesso!' };
+      })
+      .catch((err) => {
+        throw new Error(err.message);
       });
-      return { message: 'Conteúdo atualizado com sucesso!' }
-    }).catch((err) => {throw new Error(err.message)});
   }
 
   async delete(id: number): Promise<object> {
     const lastcontent = await this.contentModel.findByPk(id);
     if (!lastcontent) throw new Error('contentNotFound');
-    return this.contentModel.destroy({ where: { id } }).then(() => {
-      return { message: 'Conteúdo excluído com sucesso!' }
-    }).catch((err) => {throw new Error(err.message)});
+    return this.contentModel
+      .destroy({ where: { id } })
+      .then(() => {
+        return { message: 'Conteúdo excluído com sucesso!' };
+      })
+      .catch((err) => {
+        throw new Error(err.message);
+      });
   }
 }
 
