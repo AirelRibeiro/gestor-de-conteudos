@@ -4,7 +4,7 @@
 
 ## Descrição:
 
-<p align="justify">Essa aplicação foi desenvolvida como parte do processo seletivo para pessoa desenvolvedora backend na <a href="https://www.motrix.global/#topo" >Motrix</a>. Ela compreende um gestor de conteúdos que permite a pessoa usuária criar, ler, atualizar e apagar conteúdos, bem como ter acesso ao histórico de modificações e recuperar uma atualização anterior se assim o desejar.</p>
+<p align="justify">Essa aplicação foi desenvolvida como parte do processo seletivo para pessoa desenvolvedora backend na <a href="https://www.motrix.global/#topo" >Motrix</a>. Ela compreende um gestor de conteúdos que permite a pessoa usuária criar, ler, atualizar e apagar conteúdos, formatá-los na sua criação com editor wysiwyg, bem como consultar o histórico de modificações e recuperar uma atualização anterior se assim o desejar.</p>
 
 
 
