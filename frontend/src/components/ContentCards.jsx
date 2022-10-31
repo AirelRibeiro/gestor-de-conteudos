@@ -30,11 +30,9 @@ function ContentCard(props) {
               />
             )}
             {checkFunction && (
-              <label className="check-label" htmlFor="check-button">
+              <label className="check-label">
                 <input
-                  id="check-button"
                   type="checkbox"
-                  value={content.id}
                   className="content-checkebox"
                   onClick={() => checkFunction(content.id)}
                 />
