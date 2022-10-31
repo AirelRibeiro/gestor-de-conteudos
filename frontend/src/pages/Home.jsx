@@ -19,6 +19,7 @@ function Home() {
     const result = await requestDelete(id);
     const newInformation = information.filter((content) => content.id !== id);
     alert(result.message);
+    setChecked([]);
     setInformation(newInformation);
   }
 
@@ -28,11 +29,11 @@ function Home() {
       (content) => !checked.includes(content.id)
     );
     alert(`${result.length} conteúdos foram excluídos com sucesso!`);
+    setChecked([]);
     setInformation(newInformation);
   }
 
   async function checkFunction(id) {
-    console.log('checkFunction', id);
     if (checked.includes(id)) {
       const newChekedList = checked.filter((check) => check !== id);
       return setChecked(newChekedList);
