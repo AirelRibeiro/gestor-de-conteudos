@@ -32,8 +32,26 @@ describe('Página Home', () => {
   it('Verifica que ao clicar no botão "Mais informações" a pessoa usuária é direcionada ao histórico', () => {
     cy.get('input')
       .should(($input) => {
-        $input[1].click();
+        $input[4].click();
     });
-    cy.url().should('include', '/4');
+    cy.url().should('include', '/10');
+  });
+
+  it('Verifica que é possível excluir conteúdos individualmente', () => {
+    cy.get('input')
+      .should(($input) => {
+        $input[2].click();
+    });
+    cy.get('É nosso dever conscientizar alunos contra LGBTfobia').should('not.exist');
+  });
+
+  it('Verifica que é possível excluir conteúdos de forma conjunta', () => {
+    cy.get('input')
+      .should(($input) => {
+        $input[9].click();
+        $input[12].click();
+        $input[0].click();
+    });
+    cy.get('Maurício de Sousa recebe prêmio Cátedra Unesco por estímulo à leitura').should('not.exist');
   });
 });
