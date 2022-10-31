@@ -5,3 +5,7 @@ BEAUTIFUL CSS box-shadow examples. 2020. Título da página: 93 Beautiful CSS bo
 Editor wysiwyg, foi usado o editor de código aberto TinyMCE, fonte:
 
 TINYMCE. TinyMCE 6 Documentation. 2022. Disponível em: https://www.tiny.cloud/docs/tinymce/6/. Acesso em: 28 out. 2022.
+
+Teste de alerta com Cypress, fonte:
+
+How can we test the alert and the text it is displaying using Cypress.io Js automation framework? 2019. Disponível em: https://stackoverflow.com/questions/51795306/how-can-we-test-the-alert-and-the-text-it-is-displaying-using-cypress-io-js-auto#:~:text=This%20is%20a%20much%20simpler%20and%20more%20intuitive%20way%3A. Acesso em: 31 out. 2022.
