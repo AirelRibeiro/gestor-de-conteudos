@@ -50,7 +50,6 @@ describe('Página Create', () => {
     });
 
     cy.url().should('not.include', '/create');
-    cy.url().should('include', '/11');
   });
 
 });
@@ -107,7 +106,6 @@ describe('Página Update', () => {
     });
 
     cy.url().should('not.include', '/update');
-    cy.url().should('include', '/11');
   });
 
 });
