@@ -64,7 +64,17 @@ describe('Página Search', () => {
     });
     cy.on('window:alert', (str) => {
       expect(str).to.equal(`3 conteúdos foram excluídos com sucesso!`)
-    })
+    });
+    
+  });
+
+  it('Verifica que, se nenhum conteúdo com o título for encontrado, será emitido o alerta correto', () => {
+    cy.get('#title-input').type('duvidoso');
+    cy.get('#search-button').click();
+
+    cy.on('window:alert', (str) => {
+      expect(str).to.equal(`Nenhum conteúdo com esse título foi encontrado!`)
+    });
     
   });
 });
