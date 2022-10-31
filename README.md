@@ -100,5 +100,14 @@
   ```
     npm run test
   ```
+  
+  3. Quando o Cypress abrir, você só precisa rodar as specs:
+  ```
+    0_header.cy.js
+    1_home.cy.js
+    2_history.cy.js
+    3_search.cy.js
+    4_formDemostration.cy.js
+  ```
 
 </details>
