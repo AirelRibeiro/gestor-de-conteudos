@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import ContentCard from '../components/ContentCards';
-import { requestWithQuery } from '../helpers/apiHelpers';
+import { requestWithQuery, requestDelete } from '../helpers/apiHelpers';
 import '../style/Search.css';
 
 function Search() {
   const [information, setInformation] = useState([]);
+  const [checked, setChecked] = useState([]);
   const [title, setTitle] = useState('');
 
   async function fetchData() {
@@ -21,6 +22,32 @@ function Search() {
   function change({ target }) {
     const { value } = target;
     setTitle(value);
+  }
+
+  async function deleteOne(id) {
+    const result = await requestDelete(id);
+    const newInformation = information.filter((content) => content.id !== id);
+    alert(result.message);
+    setChecked([]);
+    setInformation(newInformation);
+  }
+
+  async function deleteMany() {
+    const result = await Promise.all(checked.map((id) => requestDelete(id)));
+    const newInformation = information.filter(
+      (content) => !checked.includes(content.id)
+    );
+    alert(`${result.length} conteúdos foram excluídos com sucesso!`);
+    setChecked([]);
+    setInformation(newInformation);
+  }
+
+  async function checkFunction(id) {
+    if (checked.includes(id)) {
+      const newChekedList = checked.filter((check) => check !== id);
+      return setChecked(newChekedList);
+    }
+    return setChecked([...checked, id]);
   }
 
   return (
@@ -41,7 +68,21 @@ function Search() {
           onClick={fetchData}
         />
       </div>
-      {information.length && <ContentCard information={information} />}
+      {information.length && (
+        <>
+          <input
+            type="button"
+            value="Excluir conteúdos selecionados"
+            id="delete-button"
+            onClick={deleteMany}
+          />
+          <ContentCard
+            information={information}
+            deleteOne={deleteOne}
+            checkFunction={checkFunction}
+          />
+        </>
+      )}
       {!information.length && <h1>Busque seu conteúdo pelo título!</h1>}
     </div>
   );
