@@ -38,6 +38,33 @@ describe('Página Search', () => {
     });
 
     cy.url().should('not.include', '/search');
-    cy.url().should('include', '/5');
+  });
+
+  it('Verifica que é possível excluir conteúdos individualmente', () => {
+    cy.get('#title-input').type('educação');
+    cy.get('#search-button').click();
+
+    cy.get('input')
+      .should(($input) => {
+        $input[4].click();
+    });
+    cy.get('Educação é uma descoberta progressiva de nossa própria ignorância').should('not.exist');
+  });
+
+  it('Verifica que é possível excluir conteúdos de forma conjunta', () => {
+    cy.get('#title-input').type('educação');
+    cy.get('#search-button').click();
+
+    cy.get('input')
+      .should(($input) => {
+        $input[5].click();
+        $input[8].click();
+        $input[11].click();
+        $input[2].click();
+    });
+    cy.on('window:alert', (str) => {
+      expect(str).to.equal(`3 conteúdos foram excluídos com sucesso!`)
+    })
+    
   });
 });
