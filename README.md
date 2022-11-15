@@ -1,10 +1,10 @@
-# <h1 align="center"> Conteúdos Motrix </h1>
+# <h1 align="center"> Adicione seus 10 centavos! </h1>
 
 ![image](https://user-images.githubusercontent.com/98190806/198351437-58e88e9d-e01b-4f66-b457-98aaaf092156.png)
 
 ## Descrição:
 
-<p align="justify">Essa aplicação foi desenvolvida como parte do processo seletivo para pessoa desenvolvedora backend na <a href="https://www.motrix.global/#topo" >Motrix</a>. Ela compreende um gestor de conteúdos que permite a pessoa usuária criar, ler, atualizar e apagar conteúdos, formatá-los na sua criação com editor wysiwyg, bem como consultar o histórico de modificações e recuperar uma atualização anterior se assim o desejar.</p>
+<p align="justify"><strong>Adicione seus 10 centavos</strong> é uma aplicação de gestão de conteúdos que permite a pessoa usuária criar, ler, atualizar e apagar conteúdos; formatá-los na sua criação com editor wysiwyg, bem como consultar o histórico de modificações e recuperar uma atualização anterior, se assim o desejar.</p>
 
 
 
@@ -17,7 +17,7 @@
 
   ### Banco de dados:
 
-  <p align="justify">O banco de dados da aplicação é o Motrix, suportado pelo <strong>MySQL</strong>, um sistema de gerenciamento de bancos de dados relacionais open-source. O banco conta com duas tabelas, uma para armazenar os conteúdos, denominada <strong>contents</strong> e outra para armazenar o histórico das alterações feitas nos conteúdos ao longo do tempo,denominada <strong>histories</strong>. As tabelas possuem campos e relacionamento conforme demonstrado no esque abaixo: </p>
+  <p align="justify">O banco de dados da aplicação é o MyNotes, suportado pelo <strong>MySQL</strong>, um sistema de gerenciamento de bancos de dados relacionais open-source. O banco conta com duas tabelas, uma para armazenar os conteúdos, denominada <strong>contents</strong> e outra para armazenar o histórico das alterações feitas nos conteúdos ao longo do tempo,denominada <strong>histories</strong>. As tabelas possuem campos e relacionamento conforme demonstrado no esque abaixo: </p>
 
   ![image](https://user-images.githubusercontent.com/98190806/198350462-024589a1-8c00-4c0c-ad4f-3c0ba390ff93.png)
 
