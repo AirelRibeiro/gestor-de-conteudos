@@ -1,6 +1,6 @@
 # <h1 align="center"> Adicione seus 10 centavos! </h1>
 
-![image](https://user-images.githubusercontent.com/98190806/198351437-58e88e9d-e01b-4f66-b457-98aaaf092156.png)
+![image](https://user-images.githubusercontent.com/98190806/201943181-1f0676b2-e2f0-4fc7-a105-a91d48011629.png)
 
 ## Descrição:
 
