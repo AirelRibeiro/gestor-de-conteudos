@@ -4,8 +4,8 @@
 
 ## Descrição:
 
-<p align="justify"><strong>Adicione seus 10 centavos</strong> é uma aplicação de gestão de conteúdos que permite a pessoa usuária criar, ler, atualizar e apagar conteúdos; formatá-los na sua criação com editor wysiwyg, bem como consultar o histórico de modificações e recuperar uma atualização anterior, se assim o desejar.</p>
 
+<p align="justify"><strong>Adicione seus 10 centavos</strong> é uma aplicação de gestão de conteúdos que permite a pessoa usuária criar, ler, atualizar e apagar conteúdos; formatá-los na sua criação com editor wysiwyg, bem como consultar o histórico de modificações e recuperar uma atualização anterior, se assim o desejar.</p>
 
 
 <details>
@@ -29,6 +29,7 @@
   <a href="https://documenter.getpostman.com/view/22527230/2s84LF4bz7" target="_blanck">
     <img src="https://user-images.githubusercontent.com/98190806/198616220-1791f96f-b572-42aa-8bfd-21bec5d7fe5a.png" height="160"/>
   </a>
+
 
   ### Frontend:
 
@@ -111,3 +112,4 @@
   ```
 
 </details>
+
