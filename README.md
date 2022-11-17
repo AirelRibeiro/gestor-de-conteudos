@@ -4,7 +4,7 @@
 
 ## Descrição:
 
-<p align="justify">Essa aplicação foi desenvolvida como parte do processo seletivo para pessoa desenvolvedora backend na <a href="https://www.motrix.global/#topo" >Motrix</a>. Ela compreende um gestor de conteúdos que permite a pessoa usuária criar, ler, atualizar e apagar conteúdos, bem como ter acesso ao histórico de modificações e recuperar uma atualização anterior se assim o desejar.</p>
+<p align="justify">Essa aplicação compreende um gestor de conteúdos que permite a pessoa usuária criar, ler, atualizar e apagar conteúdos, bem como ter acesso ao histórico de modificações e recuperar uma atualização anterior se assim o desejar.</p>
 
 ## Configurações das estruturas:
 
@@ -31,34 +31,38 @@
 
 <p align="justify">O frontend da aplicação foi desenvolvido em <strong>React</strong>. Ela é composta de cinco rotas, viabilizadas pelo <strong>React-Router-Dom</strong>; sendo elas para listar todos os conteúdos, pesquisar conteúdos por título, visualizar histórico de atualizações, atualizar conteúdos e criá-los. O desenvolvimento do frontend também foi orientado ao comportamento, com os testes sendo <strong>End2End</strong>, desenvolvidos utilizando <strong>Cypress</strong>.A estrutura seguida empregou a organização de diretórios por funcionalidades, contando com as separações entre <strong>components</strong>, <strong>page</strong>, <strong>helpers</strong> e <strong>style</strong>; enquanto isso, a estilização da página foi feita utilizando <strong>CSS</strong>.</p>
 
-
 ## Rodando o projeto na sua máquina:
 
 1. Escolha um diretório e clone o repositório utilizando **git clone**:
+
 ```
   git@github.com:AirelRibeiro/motrix-desafio.git
 ```
 
 2. Acesse o diretório do projeto **motrix-desafio** e instale as dependências:
+
 ```
   cd motrix-desafio
   npm install
 ```
 
 3. Então rode o script **compose:up** para montar a aplicação:
+
 ```
   npm run compose:up
 ```
 
 4. Entre no diretório de backend e utilize o script **prepare:db** para iniciar o banco Motrix:
+
 ```
   cd backend
   npm run prepare:db
 ```
+
 5. Por fim, com o banco funcionando, acesse o projeto via navegador, usando a seguinte url:
+
 ```
   http://localhost:3000
 ```
+
 _Para sua melhor experiência o script **prepare:db** também popula o banco com 10 conteúdos, então a página inicial da aplicação irá lista-los assim que carregar._
-
-

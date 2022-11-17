@@ -1,5 +1,5 @@
 {
-  "name": "motrix-desafio",
+  "name": "Adicione seus 10 centavos",
   "version": "1.0.0",
   "description": "Aplicação de gestão de conteúdos com backend em Node.js e frontend em React.js.",
   "main": "index.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AirelRibeiro/motrix-desafio.git"
+    "url": "git+https://github.com/AirelRibeiro/gestor-de-conteudos.git"
   },
   "author": "Airel Ribeiro",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AirelRibeiro/motrix-desafio/issues"
+    "url": "https://github.com/AirelRibeiro/gestor-de-conteudos/issues"
   },
-  "homepage": "https://github.com/AirelRibeiro/motrix-desafio#readme",
+  "homepage": "https://github.com/AirelRibeiro/gestor-de-conteudos#readme",
   "devDependencies": {
     "@testing-library/jest-dom": "5.15.0",
     "@testing-library/react": "11.2.7",
