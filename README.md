@@ -42,12 +42,12 @@
 
   1. Escolha um diretório e clone o repositório utilizando **git clone**:
   ```
-    git@github.com:AirelRibeiro/motrix-desafio.git
+    git@github.com:AirelRibeiro/gestor-de-conteudos.git
   ```
 
-  2. Acesse o diretório do projeto **motrix-desafio** e instale as dependências:
+  2. Acesse o diretório do projeto **gestor-de-conteudos** e instale as dependências:
   ```
-    cd motrix-desafio
+    cd gestor-de-conteudos
     npm install
   ```
 
@@ -56,7 +56,7 @@
     npm run compose:up
   ```
 
-  4. Entre no diretório de backend e utilize o script **prepare:db** para iniciar o banco Motrix:
+  4. Entre no diretório de backend e utilize o script **prepare:db** para iniciar o banco MyNotes:
   ```
     cd backend
     npm run prepare:db
