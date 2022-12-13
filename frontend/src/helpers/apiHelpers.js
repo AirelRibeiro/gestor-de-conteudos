@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: `http://localhost:3001`,
+  baseURL: `https://gestor-de-conteudos-production.up.railway.app`,
 });
 
 export const requestGetAll = async () => {
@@ -17,7 +17,7 @@ export const requestWithQuery = async (query) => {
 export const requestDelete = async (id) => {
   const { data } = await API.delete(`/${id}`);
   return data;
-}
+};
 
 export const requestUpdate = async (id, body) => {
   const { data } = await API.put(`/${id}`, body);
