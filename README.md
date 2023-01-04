@@ -21,6 +21,7 @@
 
   ![image](https://user-images.githubusercontent.com/98190806/198350462-024589a1-8c00-4c0c-ad4f-3c0ba390ff93.png)
 
+
   ### Backend:
 
   <p align="justify">A ligação entre o banco de dados e o frontend é feita por meio de uma <strong>API RESTful</strong>, contando com as camadas <strong>MSC</strong> (Model, Service e Controller) e uma camada adicional de <strong>middlewares</strong> para validação de requisições e tratamento de erros. A API foi contruída em <strong>Node.js</strong> e teve seus endpoints estruturados com uso do <strong>Express</strong>; a manipulação do banco de dados foi facilitada pelo uso da <strong>ORM Sequelize</strong>. É uma <strong>API CRUD</strong> (Create, Read, Update and Delete), permitindo operações de <strong>criação, leitura, atualização e exclusão</strong> de conteúdos.</p>
@@ -113,3 +114,10 @@
 
 </details>
 
+<details>
+  <summary><h2>Informações de deploy</h2></summary>
+
+  <p align="justify">Para deploy do banco e do backend foi utilizada a plataforma <strong>Railway</strong>. Dessa forma, por uma questão de capacidade de armazenamento, o banco utilizado na plataforma foi o <strong>PostgreSQL</strong>, sendo realizadas nas variáveis de ambiente as devidas alterações. Como também trata-se de um banco SQL e a manipulação das tabelas é feita por meio do <strong>Sequelize</strong>, nenhuma refatoração foi necessária no código do backend. </p>
+  <p align="justify">Enquanto isso, o deploy do frontend da aplicação foi realizado na <strong>Vercel</strong> e pode ser acessada para visualização e interação <strong><a href="https://gestor-de-conteudos.vercel.app/" target="_blanck">neste endereço</a></strong>.
+  
+  </details>
