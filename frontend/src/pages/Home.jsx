@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import ContentCard from '../components/ContentCards';
 import { requestDelete, requestGetAll } from '../helpers/apiHelpers';
+import { contentsArray } from '../mocks/Content.mock';
 import '../style/Home.css';
 
 function Home() {
@@ -9,8 +10,9 @@ function Home() {
 
   useEffect(() => {
     async function fetchData() {
-      const data = await requestGetAll();
-      setInformation(data);
+      // const data = await requestGetAll();
+      console.log(contentsArray);
+      setInformation(contentsArray);
     }
     fetchData();
   }, []);
