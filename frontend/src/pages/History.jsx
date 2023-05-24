@@ -4,7 +4,6 @@ import Content from '../components/Content';
 import Updates from '../components/Updates';
 import { requestDelete, requestHistory } from '../helpers/apiHelpers';
 import '../style/History.css';
-import { historyById, singleContent } from '../mocks/Content.mock';
 
 function History() {
   const [information, setInformation] = useState([]);
@@ -14,14 +13,14 @@ function History() {
 
   useEffect(() => {
     async function fetchData(id) {
-      // const data = await requestHistory(id);
-      // const history = data.history.sort((a, b) => {
-      //   return (
-      //     new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-      //   );
-      // });
+      const data = await requestHistory(id);
+      const history = data.history.sort((a, b) => {
+        return (
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        );
+      });
 
-      setInformation([singleContent, historyById]);
+      setInformation([data, history]);
     }
     fetchData(location.pathname);
   }, [location]);
